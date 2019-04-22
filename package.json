@@ -32,6 +32,9 @@
     ]
   },
   "devDependencies": {
-    "redux-devtools-extension": "^2.13.8"
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "redux-devtools-extension": "^2.13.8",
+    "react-test-renderer": "^16.8.6"
   }
 }
