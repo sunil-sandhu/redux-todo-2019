@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 // import {increment, decrement, addFive} from "./redux/actionCreators/mathsActions";
 import mathsActions from '../redux/actions/mathsActions'
@@ -19,6 +20,16 @@ const App = (props) => {
     </div>
   );
 }
+
+App.propTypes = {
+  message: PropTypes.string,
+  number: PropTypes.number,
+  updateMessage: PropTypes.func,
+  increment: PropTypes.func,
+  decrement: PropTypes.func,
+  addFive: PropTypes.func
+}
+
 
 const mapStateToProps = (state /*, ownProps*/) => {
   return {
