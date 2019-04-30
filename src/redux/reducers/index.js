@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import dummyReducer from './dummyReducer'
+import messagesReducer from './messagesReducer'
 import mathsReducer from './mathsReducer'
 
 export default combineReducers({
-    dummyReducer,
+    messagesReducer,
     mathsReducer
 })

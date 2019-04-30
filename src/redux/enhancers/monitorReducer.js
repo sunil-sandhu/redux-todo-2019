@@ -1,3 +1,10 @@
+/**
+*
+* This monitors how long it takes for a reducer to dispatch
+* and outputs the duration 
+*
+**/
+
 const round = number => Math.round(number * 100) / 100
 
 const monitorReducerEnhancer = createStore => (
