@@ -16,3 +16,11 @@ export const addFive = () => ({
   payload: 5
 });
 
+
+
+const mathsActions = {
+  increment,
+  decrement,
+  addFive
+}
+export default mathsActions

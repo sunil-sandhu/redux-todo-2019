@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import combineReducers from './redux/reducers'
-import {increment, decrement, addFive} from "./redux/actionCreators/mathsActions";
+// import {increment, decrement, addFive} from "./redux/actionCreators/mathsActions";
+import mathsActions from './redux/actionCreators/mathsActions'
 import logo from './logo.svg';
 import './App.css';
 
@@ -28,12 +29,17 @@ const mapStateToProps = (state /*, ownProps*/) => {
 }
 
 
-
+// This does the same as the mapDispatchToProps below that uses the spread operator
+// Then it just depends on whether to use it this way or whether to bring each const in
+// Separately in the import statement at the top - case of whether you want expressiveness
+// Or an easier set up
+// const mapDispatchToProps = {
+//   increment,
+//   decrement,
+//   addFive
+// }
 const mapDispatchToProps = {
-  increment,
-  decrement,
-  addFive
-
+  ...mathsActions
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
