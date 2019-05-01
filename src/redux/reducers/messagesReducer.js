@@ -1,7 +1,8 @@
-import { UPDATE_MESSAGE } from '../actionTypes'
+import { UPDATE_MESSAGE, FETCH_MESSAGE } from '../actionTypes'
 
 const initialState = {
-  message: 'Our messages reducer is working'
+  message: 'Our messages reducer is working',
+  list: null
 }
 
 export default function messagesReducer(state = initialState, action) {
@@ -11,7 +12,13 @@ export default function messagesReducer(state = initialState, action) {
           ...state, 
           message: action.payload
         }
-      return state
+      return state;
+      case FETCH_MESSAGE:
+        state = {
+          ...state, 
+          list: action.payload
+        }
+      return state;
       default:
         return state
     }

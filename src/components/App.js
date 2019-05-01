@@ -8,15 +8,27 @@ import './App.css';
 
 const App = (props) => {
   console.info('<App> props', props);
-  const { updateMessage, increment, decrement, addFive, message, number } = props;
+  const { fetchMessage, updateMessage, increment, decrement, addFive, message, number, list } = props;
   return (
     <div>
       <h2>{message}</h2>
       <input onChange={updateMessage}/>
+      <button onClick={fetchMessage}>fetch message</button>
       <button onClick={increment}>increment</button>
       <button onClick={decrement}>decrement</button>
       <button onClick={addFive}>add five</button>
+<<<<<<< Updated upstream
       <h1>{number}</h1>
+=======
+      <h4>{number}</h4>
+      <ul>
+      {
+        list && list.map(item => {
+          return(<li>{item.title}</li>)
+        })
+      }
+      </ul>
+>>>>>>> Stashed changes
     </div>
   );
 }
@@ -24,6 +36,7 @@ const App = (props) => {
 App.propTypes = {
   message: PropTypes.string,
   number: PropTypes.number,
+  fetchMessage: PropTypes.func,
   updateMessage: PropTypes.func,
   increment: PropTypes.func,
   decrement: PropTypes.func,
@@ -34,7 +47,8 @@ App.propTypes = {
 const mapStateToProps = (state /*, ownProps*/) => {
   return {
    message: state.messagesReducer.message,
-   number: state.mathsReducer.number
+   number: state.mathsReducer.number,
+   list: state.messagesReducer.list
   }
 }
 
