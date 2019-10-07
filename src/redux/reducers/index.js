@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux'
-import messagesReducer from './messagesReducer'
-import mathsReducer from './mathsReducer'
+import { combineReducers } from "redux";
+import appReducer from "./appReducer";
 
-export default combineReducers({
-    messagesReducer,
-    mathsReducer
-})
+const rootReducer = combineReducers({
+  appReducer
+});
+
+export default rootReducer;

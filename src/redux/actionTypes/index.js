@@ -1,6 +1,4 @@
 // Your action constants go here
-export const INCREMENT = "INCREMENT";
-export const DECREMENT = "DECREMENT";
-export const ADD_FIVE = "ADD_FIVE";
-export const UPDATE_MESSAGE = "UPDATE_MESSAGE";
-export const FETCH_MESSAGE = "FETCH_MESSAGE";
+export const ADD_ITEM = "ADD_ITEM";
+export const DELETE_ITEM = "DELETE_ITEM";
+export const HANDLE_INPUT = "HANDLE_INPUT";
