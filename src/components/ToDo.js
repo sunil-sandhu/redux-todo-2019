@@ -1,31 +1,33 @@
 import React, { useState } from "react";
-import ReactLogo from "../assets/react.png";
 import ReduxLogo from "../assets/redux.png";
 import ToDoItem from "./ToDoItem";
-
-import { connect } from "react-redux";
-import appActions from "../redux/actions/appActions";
+import "./ToDo.css";
 
 const ToDo = (props) => {
-  const { list, createNewToDoItem, deleteItem } = props;
+  const { list, redux_add, redux_delete } = props;
   const [todo, setTodo] = useState("");
+
   const generateId = () => {
-    return Math.max(...list.map((t) => t.id)) + 1;
+    if (list && list.length > 1) {
+      return Math.max(...list.map((t) => t.id)) + 1;
+    } else {
+      return 1;
+    }
   };
-  const handleCreateNewToDoItem = () => {
+
+  const createNewToDoItem = () => {
     //validate todo
     if (!todo) {
-      alert("Please enter a todo!");
-      return;
+      return alert("Please enter a todo!");
     }
     const newId = generateId();
-    createNewToDoItem({ id: newId, text: todo });
+    redux_add({ id: newId, text: todo });
     setTodo("");
   };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      handleCreateNewToDoItem();
+      createNewToDoItem();
     }
   };
 
@@ -33,8 +35,8 @@ const ToDo = (props) => {
     setTodo(e.target.value);
   };
 
-  const handleDeleteItem = (todo) => {
-    deleteItem(todo.id);
+  const deleteItem = (todo) => {
+    redux_delete(todo.id);
   };
 
   return (
@@ -45,13 +47,13 @@ const ToDo = (props) => {
         <div className="ToDo-Content">
           {list &&
             list.map((item) => {
-              return <ToDoItem key={item.id} item={item} deleteItem={handleDeleteItem} />;
+              return <ToDoItem key={item.id} item={item} deleteItem={deleteItem} />;
             })}
         </div>
 
         <div className="ToDoInput">
           <input type="text" value={todo} onChange={handleInput} onKeyPress={handleKeyPress} />
-          <button className="ToDo-Add" onClick={handleCreateNewToDoItem}>
+          <button className="ToDo-Add" onClick={createNewToDoItem}>
             +
           </button>
         </div>
@@ -60,18 +62,4 @@ const ToDo = (props) => {
   );
 };
 
-const mapDispatchToProps = {
-  ...appActions
-};
-
-const mapStateToProps = (state /*, ownProps*/) => {
-  return {
-    todo: state.appReducer.todo,
-    list: state.appReducer.list
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ToDo);
+export default ToDo;

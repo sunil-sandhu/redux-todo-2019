@@ -1,18 +1,18 @@
 import { ADD_ITEM, DELETE_ITEM } from "../actionTypes";
 
-export const createNewToDoItem = (todo) => ({
+const redux_add = (todo) => ({
   type: ADD_ITEM,
   payload: todo
 });
 
-export const deleteItem = (id) => ({
+const redux_delete = (id) => ({
   type: DELETE_ITEM,
   payload: id
 });
 
 const appActions = {
-  createNewToDoItem,
-  deleteItem
+  redux_add,
+  redux_delete
 };
 
 export default appActions;
